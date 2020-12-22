@@ -1,0 +1,67 @@
+﻿@model RegistrationModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-center">Registration</h3>
+    </div>
+</div>
+
+@if (Model?.Name != null && Model?.Age != null && Model?.Email != null)
+{
+    <h4 class="text-success text-center">Your are successfully registered as:</h4>
+    <h5 class="text-success text-center">Name: @Model.Name</h5>
+    <h5 class="text-success text-center">Age: @Model.Age</h5>
+    <h5 class="text-success text-center">Email: @Model.Email</h5>
+}
+
+<form asp-controller="Registration" asp-action="Post" method="post">
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <label asp-for="@Model.Name"></label>
+            </div>
+            <div class="col-sm-8 col-md-6">
+                <input asp-for="@Model.Name" class="form-control" placeholder="Enter your name" />
+            </div>
+            <div class="col-12 text-center">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <label asp-for="@Model.Age"></label>
+            </div>
+            <div class="col-sm-8 col-md-6">
+                <input asp-for="@Model.Age" class="form-control" placeholder="Enter your age" />
+            </div>
+            <div class="col-12 text-center">
+                <span asp-validation-for="@Model.Age" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <label asp-for="@Model.Email"></label>
+            </div>
+            <div class="col-sm-8 col-md-6">
+                <input asp-for="@Model.Email" class="form-control" placeholder="Enter your email" />
+            </div>
+            <div class="col-12 text-center">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-6 col-lg-2">
+            <button type="submit" class="btn btn-success form-control">Register</button>
+        </div>
+    </div>
+</form>
